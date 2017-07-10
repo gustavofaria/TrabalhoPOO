@@ -7,7 +7,7 @@ public class Game {
     public Game (Player p1,CPU cpu){
         String numbers[] = new String[100];
         final JFrame janela = new JFrame("Batalha Naval");
-        janela.setSize(800,800);
+        janela.setSize(500,500);
         JLabel player = new JLabel("Jogador");
         JLabel computer = new JLabel("Computador");
         JPanel main = new JPanel(new GridLayout(1,2));
@@ -16,24 +16,41 @@ public class Game {
         JPanel plyshp = new JPanel(new GridLayout(10,10));
         JPanel cpushp = new JPanel(new GridLayout(10,10));
         JLabel you[] = new JLabel[100];
-        for(int i=0;i<100;i++) plyshp.add(you[i] = new JLabel(Integer.toString(i)));
+        for(int i=0;i<100;i++) {
+            if(p1.isThere(i)){
+                plyshp.add(you[i] = new JLabel("X"));
+            }
+            else plyshp.add(you[i] = new JLabel("O"));
+        }
         for(int i=0;i<100;i++) numbers[i] = Integer.toString(i);
         
         ActionListener getnumb = new ActionListener(){
             public void actionPerformed(ActionEvent e){
                 JButton click = (JButton)e.getSource();
+                
                 int i = Integer.parseInt(click.getText());
-                if(cpu.getAttacked(i)) click.setName("Hit");
-                else click.setName("Miss");
-                click.setEnabled(false);
-                if(cpu.endOfGame()) JOptionPane.showMessageDialog(null,"VOCE VENCEU !!! ");
+                
+                if(cpu.getAttacked(i)) {
+                    click.setEnabled(false);
+                    click.setText("X");
+                }
+                else{
+                    click.setEnabled(false);
+                    click.setText("O");
+                }
+                
+                if(cpu.endOfGame()) {
+                    
+                    JOptionPane.showMessageDialog(null,"VOCE VENCEU !!! ");
+                }
                 
                 int a = cpu.attacking(p1);
                 if(a > 0) you[a-1].setText("Hit");
                 else you[(-1)*(a-1)].setText("Miss");
                 if(p1.endOfGame()) JOptionPane.showMessageDialog(null,"VOCE PERDEU !!!");
             }
-        };      
+        };
+        
         for(int i=0;i<100;i++)((JButton)cpushp.add(new JButton(numbers[i]))).addActionListener(getnumb);
         right.add(plyshp,BorderLayout.CENTER);
         right.add(player,BorderLayout.NORTH);
