@@ -10,7 +10,12 @@ public class Ship {
         coord = c;
     }
     
-    public boolean attacked(int x){
+    public boolean coord(int x){
+        for(int i=0;i<size;i++) if(coord[i] == x) return true;
+        return false;
+    }
+    
+    public boolean attackHit(int x){
         for(int i=0;i<size;i++) if(coord[i] == x){
             size--;
             coord[i] = -1;
@@ -28,4 +33,5 @@ public class Ship {
         for(int i: coord) for(int j: x) if(i == j) return true;
         return false;
     }
+    
 }
