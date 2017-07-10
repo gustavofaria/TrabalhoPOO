@@ -12,7 +12,7 @@ public class setUP {
     
     public setUP(){
         Player p1 = new Player();
-        CPU computer = new CPU();
+        
         bts = 1;
         crs = 2;
         dtr = 3;
@@ -39,114 +39,54 @@ public class setUP {
         ActionListener getnumb = new ActionListener(){
             public void actionPerformed(ActionEvent e){
                 JButton click = (JButton)e.getSource();
-                int b,c;
+                
+                int a;
+                int b;
+                int c;
+                a = 0;
+                b = 0;
+                
                 c = Integer.parseInt(click.getText());
                 
-                if(bts == 0 && crs == 0 && dtr ==0 && sub == 0) {
+                if((bts == 0) && (crs == 0) && (dtr == 0) && (sub == 0)) {
                     janela.setVisible(false);
+                    CPU computer = new CPU();
                     Game gg = new Game(p1,computer);
                 }
-
-                if(pst.getSelectedItem().toString().equals("Vertical")){
-                    b = -1;
-
-                    if(opt.getSelectedItem().toString().equals("BattleShip")){
-                        int aux[] = p1.validPI(4,b,c);
-                        if(aux != null){
-                            System.out.println("vb sucess");
-                            BattleShip bs = new BattleShip(aux);
-                            p1.addShip(bs);
-                            opt.removeItemAt(opt.getSelectedIndex());
-                            bts--;
-                        }
-                        else JOptionPane.showMessageDialog(null,"Posicao Invalida !!!");
-                    }
-
-                    if(opt.getSelectedItem().toString().equals("Cruiser")){
-                        int aux[] = p1.validPI(3,b,c);
-                        if(aux != null){
-                            System.out.println("vc sucess");
-                            Cruiser bs = new Cruiser(aux);
-                            p1.addShip(bs);
-                            if(crs == 1) opt.removeItemAt(opt.getSelectedIndex());
-                            crs--;
-                        }
-                        else JOptionPane.showMessageDialog(null,"Posicao Invalida !!!");
-                    }
-
-                    if(opt.getSelectedItem().toString().equals("Destroyer")){
-                        int aux[] = p1.validPI(2,b,c);
-                        if(aux != null){
-                            System.out.println("vd sucess");
-                            Destroyer bs = new Destroyer(aux);
-                            p1.addShip(bs);
-                            if(dtr == 1) opt.removeItemAt(opt.getSelectedIndex());
-                            dtr--;
-                        }
-                        else JOptionPane.showMessageDialog(null,"Posicao Invalida !!!"); 
-                    }
-
-                    if(opt.getSelectedItem().toString().equals("Submarine")){
-                        int aux[] = p1.validPI(1,b,c);
-                        if(aux != null){
-                            System.out.println("vs sucess");
-                            Submarine bs = new Submarine(aux);
-                            p1.addShip(bs);
-                            if(sub == 1) opt.removeItemAt(opt.getSelectedIndex());
-                            sub--;
-                        }
-                        else JOptionPane.showMessageDialog(null,"Posicao Invalida !!!");
-                    }
-                    
+                
+                if(pst.getSelectedItem().toString().equals("Vertical")) b = -1;
+                if(pst.getSelectedItem().toString().equals("Horizontal")) b = 1;
+                if(opt.getSelectedItem().toString().equals("BattleShip"))a = 4;
+                if(opt.getSelectedItem().toString().equals("Cruiser"))a = 3;
+                if(opt.getSelectedItem().toString().equals("Destroyer"))a = 2;
+                if(opt.getSelectedItem().toString().equals("Submarine"))a = 1;
+                
+                int vet[];
+                vet = p1.validPI(a, b, c);
+                
+                if(vet != null){
+                   Ship ss = new Ship(a,vet);
+                   click.setEnabled(false);
+                   p1.addShip(ss);
+                   if(a == 4){
+                       if(bts == 1) opt.removeItemAt(opt.getSelectedIndex());
+                       bts--;
+                   }
+                   if(a == 3){
+                       if(crs == 1) opt.removeItemAt(opt.getSelectedIndex());
+                       crs--;
+                   }
+                   if(a == 2){
+                       if(dtr == 1) opt.removeItemAt(opt.getSelectedIndex());
+                       dtr--;
+                   }
+                   if(a == 1){
+                       if(sub == 1) opt.removeItemAt(opt.getSelectedIndex());
+                       sub--;
+                   }
                 }
-
-                if(pst.getSelectedItem().toString().equals("Horizontal")){
-                    b = 1;
-                    if(opt.getSelectedItem().toString().equals("BattleShip")){
-                        int aux[] = p1.validPI(4,b,c);
-                        if(aux != null){
-                            System.out.println("hb sucess");
-                            BattleShip bs = new BattleShip(aux);
-                            p1.addShip(bs);
-                            opt.removeItemAt(opt.getSelectedIndex());
-                            bts--;
-                        }
-                        else JOptionPane.showMessageDialog(null,"Posicao Invalida !!!");
-                    }
-                    if(opt.getSelectedItem().toString().equals("Cruiser")){
-                        int aux[] = p1.validPI(3,b,c);
-                        if(aux != null){
-                            System.out.println("hc sucess");
-                            Cruiser bs = new Cruiser(aux);
-                            p1.addShip(bs);
-                            if(crs == 1) opt.removeItemAt(opt.getSelectedIndex());
-                            crs--;
-                        }
-                        else JOptionPane.showMessageDialog(null,"Posicao Invalida !!!");
-                    }
-                    if(opt.getSelectedItem().toString().equals("Destroyer")){
-                        int aux[] = p1.validPI(2,b,c);
-                        if(aux != null){
-                            System.out.println("hd sucess");
-                            Destroyer bs = new Destroyer(aux);
-                            p1.addShip(bs);
-                            if(dtr == 1) opt.removeItemAt(opt.getSelectedIndex());
-                            dtr--;
-                        }
-                        else JOptionPane.showMessageDialog(null,"Posicao Invalida !!!");
-                    }
-                    if(opt.getSelectedItem().toString().equals("Submarine")){
-                        int aux[] = p1.validPI(1,b,c);
-                        if(aux != null){
-                            System.out.println("hs sucess");
-                            Submarine bs = new Submarine(aux);
-                            p1.addShip(bs);
-                            if(sub == 1) opt.removeItemAt(opt.getSelectedIndex());
-                            sub--;
-                        }
-                        else JOptionPane.showMessageDialog(null,"Posicao Invalida !!!");                        
-                    }
-                }
+                else JOptionPane.showMessageDialog(null,"Posicao Invalida !!!");
+    
             }
         };
         for(int i=0;i<100;i++)((JButton)center.add(new JButton(numbers[i]))).addActionListener(getnumb);
