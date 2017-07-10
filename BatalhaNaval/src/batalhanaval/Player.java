@@ -12,6 +12,7 @@ public class Player {
     }
     
     public int[] validPI(int s,int d,int pi){
+        
         if(d == 1){
             if(10 - ((10 + pi) % 10) < s) return null;
             else{
@@ -21,8 +22,9 @@ public class Player {
                 return vet;
             }
         }
+        
         if(d == -1){
-            if(pi+(10*s) >= 99) return null;
+            if(pi+(10*(s-1)) > 99) return null;
             else{
                 int vet[] = new int[s];
                 for(int i=0;i<s;i++) vet[i] = pi+(10*i);
@@ -43,6 +45,11 @@ public class Player {
     
     public boolean getAttacked(int d){
         for(Ship s: ships) if(s.attackHit(d)) return true;
+        return false;
+    }
+    
+    public boolean isThere(int d){
+        for(Ship s: ships) if(s.coord(d)) return true;
         return false;
     }
 }
