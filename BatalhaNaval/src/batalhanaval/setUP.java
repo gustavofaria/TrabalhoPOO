@@ -41,12 +41,9 @@ public class setUP {
                 JButton click = (JButton)e.getSource();
                 int b,c;
                 c = Integer.parseInt(click.getName());
-<<<<<<< Updated upstream
                 int a;
                 a = 0;
                 b = 0;
-=======
->>>>>>> Stashed changes
                 
                 if((bts == 0) && (crs == 0) && (dtr == 0) && (sub == 0)) {
                     janela.setVisible(false);
