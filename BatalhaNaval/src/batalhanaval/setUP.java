@@ -39,6 +39,7 @@ public class setUP {
         ActionListener getnumb = new ActionListener(){
             public void actionPerformed(ActionEvent e){
                 JButton click = (JButton)e.getSource();
+
                 Integer a,b,c;
                 c = Integer.parseInt(click.getName());
                 a= 0;
