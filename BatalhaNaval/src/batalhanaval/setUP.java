@@ -39,14 +39,10 @@ public class setUP {
         ActionListener getnumb = new ActionListener(){
             public void actionPerformed(ActionEvent e){
                 JButton click = (JButton)e.getSource();
-                int b,c;
+                Integer a,b,c;
                 c = Integer.parseInt(click.getName());
-<<<<<<< Updated upstream
-                int a;
-                a = 0;
-                b = 0;
-=======
->>>>>>> Stashed changes
+                a= 0;
+                b=0;
                 
                 if((bts == 0) && (crs == 0) && (dtr == 0) && (sub == 0)) {
                     janela.setVisible(false);
