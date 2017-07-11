@@ -39,14 +39,11 @@ public class setUP {
         ActionListener getnumb = new ActionListener(){
             public void actionPerformed(ActionEvent e){
                 JButton click = (JButton)e.getSource();
-                
+                int b,c;
+                c = Integer.parseInt(click.getName());
                 int a;
-                int b;
-                int c;
                 a = 0;
                 b = 0;
-                
-                c = Integer.parseInt(click.getText());
                 
                 if((bts == 0) && (crs == 0) && (dtr == 0) && (sub == 0)) {
                     janela.setVisible(false);
@@ -89,7 +86,14 @@ public class setUP {
     
             }
         };
-        for(int i=0;i<100;i++)((JButton)center.add(new JButton(numbers[i]))).addActionListener(getnumb);
+        Icon icone = new ImageIcon(getClass().getResource("images/sea.png"));
+        for(int i=0;i<100;i++)
+        {
+            JButton dumb = new JButton(icone);
+            dumb.setName(Integer.toString(i));
+            dumb.addActionListener(getnumb);
+            center.add(dumb);
+        }
         janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         janela.setVisible(true);
     }

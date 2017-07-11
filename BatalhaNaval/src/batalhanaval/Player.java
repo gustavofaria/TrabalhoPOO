@@ -44,7 +44,7 @@ public class Player {
     }
     
     public boolean getAttacked(int d){
-        for(Ship s: ships) if(s.attackHit(d)) return true;
+        for(Ship s: ships) if(s.attacked(d)) return true;
         return false;
     }
     
