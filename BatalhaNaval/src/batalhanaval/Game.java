@@ -28,17 +28,18 @@ public class Game {
             public void actionPerformed(ActionEvent e){
                 JButton click = (JButton)e.getSource();
                 
-                int i = Integer.parseInt(click.getText());
+                int i = Integer.parseInt(click.getName());
                 
+                Icon icone;
                 if(cpu.getAttacked(i)) {
-                    click.setEnabled(false);
-                    click.setText("X");
+                    icone = new ImageIcon(getClass().getResource("images/submarine.jpg"));
                 }
                 else{
-                    click.setEnabled(false);
-                    click.setText("O");
+                    
+                     icone = new ImageIcon(getClass().getResource("images/blueSeah.jpg"));
                 }
-                
+                click.setIcon(icone);
+                click.setEnabled(false);
                 if(cpu.endOfGame()) {
                     
                     JOptionPane.showMessageDialog(null,"VOCE VENCEU !!! ");
@@ -50,8 +51,15 @@ public class Game {
                 if(p1.endOfGame()) JOptionPane.showMessageDialog(null,"VOCE PERDEU !!!");
             }
         };
-        
-        for(int i=0;i<100;i++)((JButton)cpushp.add(new JButton(numbers[i]))).addActionListener(getnumb);
+        JButton dumb;
+        Icon icone = new ImageIcon(getClass().getResource("images/sea.png"));
+       
+        for(int i=0;i<100;i++){
+            dumb = new JButton(icone);
+            dumb.addActionListener(getnumb);
+            dumb.setName(numbers[i]);
+            cpushp.add(dumb);
+        }
         right.add(plyshp,BorderLayout.CENTER);
         right.add(player,BorderLayout.NORTH);
         left.add(cpushp,BorderLayout.CENTER);

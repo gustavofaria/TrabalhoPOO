@@ -19,10 +19,13 @@ public class Ship {
     }
     
     public boolean attackHit(int x){
-        for(int i=0;i<size;i++) if(coord[i] == x){
+        for(int i=0;i<size;i++){
+            
+            if(coord[i] == x){
             size--;
             coord[i] = -1;
             return true;
+            }
         }
         return false;
     }

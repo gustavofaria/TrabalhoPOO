@@ -11,23 +11,23 @@ public class Player {
         ships = new ArrayList<Ship>();
     }
     
-    public int[] validPI(int s,int d,int pi){
+    public int[] validPI(int length,int orientation,int pos){
         
-        if(d == 1){
-            if(10 - ((10 + pi) % 10) < s) return null;
+        if(orientation == 1){//horizontal
+            if(10 - ((10 + pos) % 10) < length) return null;
             else{
-                int vet[] = new int[s];
-                for(int i=0;i<s;i++) vet[i] = pi+i;
+                int vet[] = new int[length];
+                for(int i=0;i<length;i++) vet[i] = pos+i;
                 for(Ship ss : ships) if(ss.colision(vet)) return null;
                 return vet;
             }
         }
         
-        if(d == -1){
-            if(pi+(10*(s-1)) > 99) return null;
+        if(orientation == -1){//vertical
+            if(pos+(10*(length-1)) > 99) return null;
             else{
-                int vet[] = new int[s];
-                for(int i=0;i<s;i++) vet[i] = pi+(10*i);
+                int vet[] = new int[length];
+                for(int i=0;i<length;i++) vet[i] = pos+(10*i);
                 for(Ship ss : ships) if(ss.colision(vet)) return null;
                 return vet;
             }
