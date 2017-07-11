@@ -44,12 +44,22 @@ public class Player {
     }
     
     public boolean getAttacked(int d){
-        for(Ship s: ships) if(s.attacked(d)) return true;
+        for(Ship s: ships) if(s.attackHit(d)) return true;
         return false;
     }
     
     public boolean isThere(int d){
         for(Ship s: ships) if(s.coord(d)) return true;
         return false;
+    }
+    
+    public int[] helpImages(int x){
+        int vet[];
+        
+        for(Ship s : ships) {
+            vet = s.returnSizePos(x);
+            if(vet[0] != -1) return vet;
+        }
+        return null;
     }
 }
