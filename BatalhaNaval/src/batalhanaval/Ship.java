@@ -3,9 +3,12 @@ package batalhanaval;
 public class Ship {
     private int size;
     private int coord[];
+    private int d;
     
     public Ship(int s,int c[]){
         size = s;
+        if(c[1] == c[0]+1) d = 1;
+        else d = -1;
         coord = new int[s];
         coord = c;
     }
@@ -34,4 +37,13 @@ public class Ship {
         return false;
     }
     
+    public int[] returnSizePos(int x){
+        int st[] = new int[3];
+        for(int i=0;i<size;i++) if(coord[i] == x){
+            st[0] = size;
+            st[1] = i;
+            st[2] = d;
+        }
+        return null;
+    }
 }
