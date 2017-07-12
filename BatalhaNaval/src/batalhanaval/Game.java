@@ -1,10 +1,12 @@
 package batalhanaval;
+
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
 public class Game {
-    public Game (Player p1,CPU cpu){
+
+    public Game(Player p1, CPU cpu) {
         String numbers[] = new String[100];
         Icon icsub = new ImageIcon(getClass().getResource("images/submarine.jpg"));
         Icon ichdt1 = new ImageIcon(getClass().getResource("images/destroyer1h.jpg"));
@@ -25,83 +27,79 @@ public class Game {
         //Icon icvbs2 = new ImageIcon(getClass().getResource("images/battleship2v.jpg"));
         //Icon icvbs3 = new ImageIcon(getClass().getResource("images/battleship3v.jpg"));
         //Icon icvbs4 = new ImageIcon(getClass().getResource("images/battleship4v.jpg"));
-        
-        
+
         final JFrame janela = new JFrame("Batalha Naval");
-        janela.setSize(500,500);
+        janela.setSize(500, 500);
         JLabel player = new JLabel("Jogador");
         JLabel computer = new JLabel("Computador");
-        JPanel main = new JPanel(new GridLayout(1,2));
+        JPanel main = new JPanel(new GridLayout(1, 2));
         JPanel right = new JPanel(new BorderLayout());
         JPanel left = new JPanel(new BorderLayout());
-        JPanel plyshp = new JPanel(new GridLayout(10,10));
-        JPanel cpushp = new JPanel(new GridLayout(10,10));
+        JPanel plyshp = new JPanel(new GridLayout(10, 10));
+        JPanel cpushp = new JPanel(new GridLayout(10, 10));
         JLabel you[] = new JLabel[100];
-        for(int i=0;i<100;i++) {
-            if(p1.isThere(i)){
+        for (int i = 0; i < 100; i++) {
+            if (p1.isThere(i)) {
                 plyshp.add(you[i] = new JLabel("X"));
+            } else {
+                plyshp.add(you[i] = new JLabel("O"));
             }
-            else plyshp.add(you[i] = new JLabel("O"));
         }
-        for(int i=0;i<100;i++) numbers[i] = Integer.toString(i);
-        
-        ActionListener getnumb = new ActionListener(){
-            public void actionPerformed(ActionEvent e){
-                JButton click = (JButton)e.getSource();
-                
+        for (int i = 0; i < 100; i++) {
+            numbers[i] = Integer.toString(i);
+        }
+
+        ActionListener getnumb = new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                JButton click = (JButton) e.getSource();
+
                 int i = Integer.parseInt(click.getName());
-                
+
                 Icon icone;
-                if(cpu.getAttacked(i)) {
+                if (cpu.getAttacked(i)) {
                     click.setEnabled(false);
                     int vet[];
                     vet = p1.helpImages(i);
-                    if(vet[0] == 1) click.setIcon(icsub);
-                    if(vet[0] == 2){
-                        if(vet[1] == 1) click.setIcon(ichdt1);
-                        if(vet[1] == 2) click.setIcon(ichdt2);
-                    }
-                    if(vet[0] == 3){
-                        
-                    }
-                    if(vet[0] == 4){
-                        
-                    }
+                    click.setIcon((new Ship(vet[0], vet, vet[2])).getIcon(vet[1]));
+                } else {
+                    click.setEnabled(false);
                 }
-                else click.setEnabled(false);
-                
-                if(cpu.endOfGame()) {
-                    
-                    JOptionPane.showMessageDialog(null,"VOCE VENCEU !!! ");
+
+                if (cpu.endOfGame()) {
+
+                    JOptionPane.showMessageDialog(null, "VOCE VENCEU !!! ");
                 }
-                
+
                 int a = cpu.attacking(p1);
-                if(a > 0) you[a-1].setText("Hit");
-                else you[(-1)*(a-1)].setText("Miss");
-                if(p1.endOfGame()) JOptionPane.showMessageDialog(null,"VOCE PERDEU !!!");
+                if (a > 0) {
+                    you[a - 1].setText("Hit");
+                } else {
+                    you[(-1) * (a - 1)].setText("Miss");
+                }
+                if (p1.endOfGame()) {
+                    JOptionPane.showMessageDialog(null, "VOCE PERDEU !!!");
+                }
             }
         };
 
         Icon icone = new ImageIcon(getClass().getResource("images/sea.png"));
-        
-        for(int i=0;i<100;i++){
+
+        for (int i = 0; i < 100; i++) {
             JButton dumb = new JButton(icone);
             dumb.setName(Integer.toString(i));
             dumb.addActionListener(getnumb);
             cpushp.add(dumb);
-        }        
-        
-        
-        right.add(plyshp,BorderLayout.CENTER);
-        right.add(player,BorderLayout.NORTH);
-        left.add(cpushp,BorderLayout.CENTER);
-        left.add(computer,BorderLayout.NORTH);
+        }
+
+        right.add(plyshp, BorderLayout.CENTER);
+        right.add(player, BorderLayout.NORTH);
+        left.add(cpushp, BorderLayout.CENTER);
+        left.add(computer, BorderLayout.NORTH);
         main.add(right);
         main.add(left);
         janela.add(main);
-        
+
         janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         janela.setVisible(true);
     }
 }
-

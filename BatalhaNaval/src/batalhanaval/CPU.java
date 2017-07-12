@@ -1,25 +1,4 @@
-package batalhanaval;
-import java.util.Random;
 
-public class CPU extends Player{
-    private int attks[];
-    private int index;
-    private int hit;
-    private int nb;
-    private int nc;
-    private int nd;
-    private int ns;
-    
-    public CPU(){
-        super();
-        
-        attks = new int[100];
-        index = -1;
-        hit = 0;
-        nb = 1;
-        nc = 2;
-        nd = 3;
-        ns = 4;
         
         int vet[] = new int[1];
         Random rg = new Random();
@@ -31,8 +10,6 @@ public class CPU extends Player{
                 Ship ss = new Ship(1,vet);
                 this.addShip(ss);
                 ns--;
-            }
-        }
         
         while(nd != 0){
             int x = rg.nextInt(100);
@@ -42,8 +19,6 @@ public class CPU extends Player{
                 Ship ss = new Ship(2,vet);
                 this.addShip(ss);
                 nd--;
-            }
-        }
         
         while(nc != 0){
             int x = rg.nextInt(100);
@@ -53,7 +28,6 @@ public class CPU extends Player{
                 Ship ss = new Ship(3,vet);
                 this.addShip(ss);
                 nc--;
-            }
         }
         
         while(nb != 0){
@@ -64,12 +38,6 @@ public class CPU extends Player{
                 Ship ss = new Ship(4,vet);
                 this.addShip(ss);
                 nb--;
-            }
-        }
-    }
-    
-    public int attacking(Player p1){
-        Random rg = new Random();
         int x = rg.nextInt();
         
         if(hit == 0){
@@ -139,15 +107,6 @@ public class CPU extends Player{
                 
             }
             hit = 0;
-
         }
         
-        return x;
-    }
-    
-    public boolean belongs(int x){
-        for(int i : attks) if(i == x) return true;
-        return false;
-    }
-}
-
+        return x;
