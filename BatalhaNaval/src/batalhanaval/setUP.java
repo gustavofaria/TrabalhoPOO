@@ -39,7 +39,9 @@ public class setUP {
         ActionListener getnumb = new ActionListener(){
             public void actionPerformed(ActionEvent e){
                 JButton click = (JButton)e.getSource();
-                int b,c;
+                int a,b,c;
+                a=0;
+                b=0;
                 c = Integer.parseInt(click.getName());
                 
                 if((bts == 0) && (crs == 0) && (dtr == 0) && (sub == 0)) {
@@ -53,13 +55,14 @@ public class setUP {
                 if(opt.getSelectedItem().toString().equals("BattleShip"))a = 4;
                 if(opt.getSelectedItem().toString().equals("Cruiser"))a = 3;
                 if(opt.getSelectedItem().toString().equals("Destroyer"))a = 2;
-                if(opt.getSelectedItem().toString().equals("Submarine"))a = 1;
+                if(opt.getSelectedItem().toString().equals("Submarine"))a=1;
                 
                 int vet[];
                 vet = p1.validPI(a, b, c);
                 
                 if(vet != null){
-                   Ship ss = new Ship(a,vet);
+                  
+                   Ship ss = new Ship(a,vet,b);
                    click.setEnabled(false);
                    p1.addShip(ss);
                    if(a == 4){
@@ -69,7 +72,7 @@ public class setUP {
                    if(a == 3){
                        if(crs == 1) opt.removeItemAt(opt.getSelectedIndex());
                        crs--;
-                   }
+                   } 
                    if(a == 2){
                        if(dtr == 1) opt.removeItemAt(opt.getSelectedIndex());
                        dtr--;

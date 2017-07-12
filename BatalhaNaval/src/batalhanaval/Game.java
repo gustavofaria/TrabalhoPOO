@@ -6,7 +6,7 @@ import javax.swing.*;
 public class Game {
     public Game (Player p1,CPU cpu){
         String numbers[] = new String[100];
-        Icon icsub = new ImageIcon(getClass().getResource("images/submarine.png"));
+        Icon icsub = new ImageIcon(getClass().getResource("images/submarine.jpg"));
         Icon ichdt1 = new ImageIcon(getClass().getResource("images/destroyer1h.jpg"));
         Icon ichdt2 = new ImageIcon(getClass().getResource("images/destroyer2h.jpg"));
         //Icon icvdt1 = new ImageIcon(getClass().getResource("images/destroyer1v.jpg"));

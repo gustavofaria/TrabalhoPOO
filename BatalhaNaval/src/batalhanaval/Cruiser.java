@@ -2,8 +2,8 @@ package batalhanaval;
 
 public class Cruiser extends Ship {
 
-    public Cruiser (int c[]){
-        super(3,c);
+    public Cruiser (int c[],int d){
+        super(3,c,d);
     }
     
 }

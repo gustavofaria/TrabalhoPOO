@@ -14,7 +14,7 @@ public class Player {
     public int[] validPI(int length,int orientation,int pos){
         
         if(orientation == 1){//horizontal
-            if(10 - ((10 + pos) % 10) < length) return null;
+            if(10 -(pos%10)<length) return null;
             else{
                 int vet[] = new int[length];
                 for(int i=0;i<length;i++) vet[i] = pos+i;
@@ -44,7 +44,7 @@ public class Player {
     }
     
     public boolean getAttacked(int d){
-        for(Ship s: ships) if(s.attacked(d)) return true;
+        for(Ship s: ships) if(s.attackHit(d)) return true;
         return false;
     }
     

@@ -25,7 +25,7 @@ public class CPU extends Player{
             int c = r.nextInt(100);
             int vet[] = validPI(4,d,c);
             if(vet != null){
-                BattleShip bs = new BattleShip(vet);
+                BattleShip bs = new BattleShip(vet,d);
                 addShip(bs);
                 nb--;
             }
@@ -37,7 +37,7 @@ public class CPU extends Player{
             int c = r.nextInt(100);
             int vet[] = validPI(3,d,c);
             if(vet != null){
-                Cruiser cr = new Cruiser(vet);
+                Cruiser cr = new Cruiser(vet,d);
                 addShip(cr);
                 nc--;
             }
@@ -49,7 +49,7 @@ public class CPU extends Player{
             int c = r.nextInt(100);
             int vet[] = validPI(2,d,c);
             if(vet != null){
-                Destroyer dr = new Destroyer(vet);
+                Destroyer dr = new Destroyer(vet,d);
                 addShip(dr);
                 nd--;
             }
@@ -61,7 +61,7 @@ public class CPU extends Player{
             int c = r.nextInt(100);
             int vet[] = validPI(1,d,c);
             if(vet != null){
-                Submarine sb = new Submarine(vet);
+                Submarine sb = new Submarine(vet,d);
                 addShip(sb);
                 ns--;
             }

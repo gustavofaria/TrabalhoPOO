@@ -5,10 +5,9 @@ public class Ship {
     private int coord[];
     private int d;
     
-    public Ship(int s,int c[]){
+    public Ship(int s,int c[], int orientation){
         size = s;
-        if(c[1] == c[0]+1) d = 1;
-        else d = -1;
+       d = orientation;
         coord = new int[s];
         coord = c;
     }
