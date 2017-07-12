@@ -212,7 +212,4 @@ public class CPU extends Player {
         return false;
     }
 }
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
+
