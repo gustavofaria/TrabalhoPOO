@@ -4,9 +4,10 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
 public class Cruiser extends Ship {
-
+    private boolean a;
     public Cruiser(int c[], int d) {
         super(3, c, d);
+         a= true;
     }
         public Icon getIcon(int i) {
         switch (i) {

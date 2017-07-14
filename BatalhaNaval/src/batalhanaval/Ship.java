@@ -2,18 +2,21 @@ package batalhanaval;
 
 import javax.swing.Icon;
 
-public class Ship {
+abstract public class Ship {
 
     private int size;
     private int coord[];
+    private boolean attacked[];
     private int d;
-    private Icon icons[];
+
 
     public Ship(int s, int c[], int orientation) {
         size = s;
         d = orientation;
         coord = new int[s];
         coord = c;
+        attacked = new boolean[s];
+        for(boolean a: attacked) a = false;
     }
 
     public boolean coord(int x) {
@@ -29,8 +32,7 @@ public class Ship {
         for (int i = 0; i < size; i++) {
 
             if (coord[i] == x) {
-               // size--;
-                coord[i] = -1;
+                attacked[i]=true;
                 return true;
             }
         }
@@ -38,10 +40,10 @@ public class Ship {
     }
 
     public boolean destroyed() {
-        if (size == 0) {
-            return true;
-        }
-        return false;
+       for(boolean a: attacked) {
+           if(a == false) return false;
+       }
+       return true;
     }
 
     public boolean colision(int x[]) {
@@ -55,24 +57,26 @@ public class Ship {
         return false;
     }
 
-    public int[] returnSizePos(int x) {
-        int st[] = new int[3];
-        for (int i = 0; i < size; i++) {
-            if (coord[i] == x) {
-                st[0] = size;
-                st[1] = i;
-                st[2] = d;
-                return st;
-            }
-        }
-        return null;
+    public int getPos(int x) {
+       for(int i=0; i<size;i++)
+       {
+           if(coord[i]==x) return i;
+       }
+       return -1;
     }
 
     public Boolean isVertical() {
         return d == -1;
     }
-
-    Icon getIcon(int i) {
-        return null;
+/*    public void mostra()
+    {
+        System.out.println(" Coordenadas do navio :");
+        for(int i :coord)
+        {
+            System.out.print(" "+i);
+        }
+        System.out.println("");
     }
+*/
+    abstract Icon getIcon(int i);
 }

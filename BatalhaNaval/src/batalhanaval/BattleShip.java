@@ -4,9 +4,10 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
 public class BattleShip extends Ship {
-
+    private boolean bobinho;
     public BattleShip(int c[], int d) {
         super(4, c, d);
+        bobinho = true;
     }
 
     public Icon getIcon(int i) {

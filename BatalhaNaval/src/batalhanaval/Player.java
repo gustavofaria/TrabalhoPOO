@@ -1,11 +1,13 @@
 package batalhanaval;
 
 import java.util.ArrayList;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 
 public class Player {
 
-    private final int nofs;
-    private ArrayList<Ship> ships;
+    private int nofs;
+    protected ArrayList<Ship> ships;
 
     public Player() {
         nofs = 10;
@@ -58,9 +60,10 @@ public class Player {
         return nofs == 0;
     }
 
-    public boolean getAttacked(int d) {
+    public boolean attack(int d) {
         for (Ship s : ships) {
             if (s.attackHit(d)) {
+                if(s.destroyed()) nofs--;
                 return true;
             }
         }
@@ -76,15 +79,14 @@ public class Player {
         return false;
     }
 
-    public int[] helpImages(int x) {
-        int vet[];
+    public Icon helpImages(int x) {
 
-        for (Ship s : ships) {
-            vet = s.returnSizePos(x);
-            if (vet!=null) {
-                return vet;
+        for (Ship ss : ships) {
+            if (ss.coord(x)) {
+                return ss.getIcon(ss.getPos(x));
             }
         }
-        return null;
+
+        return new ImageIcon(getClass().getResource("images/sea.png"));
     }
 }

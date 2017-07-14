@@ -4,9 +4,11 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
 public class Destroyer extends Ship {
+    private boolean a;
 
     public Destroyer(int c[], int d) {
         super(2, c, d);
+        a=true;
     }
     public Icon getIcon(int i) {
         switch (i) {

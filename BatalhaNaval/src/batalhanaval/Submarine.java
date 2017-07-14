@@ -4,9 +4,11 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
 public class Submarine extends Ship {
+    private boolean a;
 
     public Submarine(int c[], int d) {
         super(1, c, d);
+        a=true;
     }
     @Override
     public Icon getIcon(int i) {

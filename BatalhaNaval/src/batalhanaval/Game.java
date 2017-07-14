@@ -7,28 +7,9 @@ import javax.swing.*;
 public class Game {
 
     public Game(Player p1, CPU cpu) {
-        String numbers[] = new String[100];
-        Icon icsub = new ImageIcon(getClass().getResource("images/submarine.jpg"));
-        Icon ichdt1 = new ImageIcon(getClass().getResource("images/destroyer1h.jpg"));
-        Icon ichdt2 = new ImageIcon(getClass().getResource("images/destroyer2h.jpg"));
-        //Icon icvdt1 = new ImageIcon(getClass().getResource("images/destroyer1v.jpg"));
-        //Icon icvdt2 = new ImageIcon(getClass().getResource("images/destroyer2v.jpg"));
-        Icon ichcr1 = new ImageIcon(getClass().getResource("images/cruiser1h.jpg"));
-        Icon ichcr2 = new ImageIcon(getClass().getResource("images/cruiser2h.jpg"));
-        Icon ichcr3 = new ImageIcon(getClass().getResource("images/cruiser3h.jpg"));
-        //Icon icvcr1 = new ImageIcon(getClass().getResource("images/cruiser1v.jpg"));
-        //Icon icvcr2 = new ImageIcon(getClass().getResource("images/cruiser2v.jpg"));
-        //Icon icvcr3 = new ImageIcon(getClass().getResource("images/cruiser3v.jpg"));
-        //Icon ichbs1 = new ImageIcon(getClass().getResource("images/battleship1h.jpg"));
-        //Icon ichbs2 = new ImageIcon(getClass().getResource("images/battleship2h.jpg"));
-        //Icon ichbs3 = new ImageIcon(getClass().getResource("images/battleship3h.jpg"));
-        //Icon ichbs4 = new ImageIcon(getClass().getResource("images/battleship4h.jpg"));
-        //Icon icvbs1 = new ImageIcon(getClass().getResource("images/battleship1v.jpg"));
-        //Icon icvbs2 = new ImageIcon(getClass().getResource("images/battleship2v.jpg"));
-        //Icon icvbs3 = new ImageIcon(getClass().getResource("images/battleship3v.jpg"));
-        //Icon icvbs4 = new ImageIcon(getClass().getResource("images/battleship4v.jpg"));
 
-        final JFrame janela = new JFrame("Batalha Naval");
+    
+        JFrame janela = new JFrame("Batalha Naval");
         janela.setSize(500, 500);
         JLabel player = new JLabel("Jogador");
         JLabel computer = new JLabel("Computador");
@@ -37,30 +18,23 @@ public class Game {
         JPanel left = new JPanel(new BorderLayout());
         JPanel plyshp = new JPanel(new GridLayout(10, 10));
         JPanel cpushp = new JPanel(new GridLayout(10, 10));
-        JLabel you[] = new JLabel[100];
+        JButton you[] = new JButton[100];
         for (int i = 0; i < 100; i++) {
-            if (p1.isThere(i)) {
-                plyshp.add(you[i] = new JLabel("X"));
-            } else {
-                plyshp.add(you[i] = new JLabel("O"));
-            }
+                plyshp.add(you[i] =  new JButton(p1.helpImages(i)));
+           
         }
-        for (int i = 0; i < 100; i++) {
-            numbers[i] = Integer.toString(i);
-        }
+
 
         ActionListener getnumb = new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 JButton click = (JButton) e.getSource();
 
                 int i = Integer.parseInt(click.getName());
-
-                Icon icone;
-                if (cpu.getAttacked(i)) {
+               if (cpu.attack(i)) {
                     click.setEnabled(false);
-                    int vet[];
-                    vet = p1.helpImages(i);
-                    click.setIcon((new Ship(vet[0], vet, vet[2])).getIcon(vet[1]));
+                    
+                    Icon myIcon = cpu.helpImages(i);
+                    click.setIcon(myIcon);
                 } else {
                     click.setEnabled(false);
                 }
@@ -71,11 +45,8 @@ public class Game {
                 }
 
                 int a = cpu.attacking(p1);
-                if (a > 0) {
-                    you[a - 1].setText("Hit");
-                } else {
-                    you[(-1) * (a - 1)].setText("Miss");
-                }
+                you[a].setEnabled(false);
+                
                 if (p1.endOfGame()) {
                     JOptionPane.showMessageDialog(null, "VOCE PERDEU !!!");
                 }
