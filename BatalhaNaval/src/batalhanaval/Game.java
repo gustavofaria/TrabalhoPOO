@@ -40,15 +40,20 @@ public class Game {
                 }
 
                 if (cpu.endOfGame()) {
-
+                    janela.setVisible(false);
                     JOptionPane.showMessageDialog(null, "VOCE VENCEU !!! ");
+                    new main();
+                    janela.dispose();
                 }
 
                 int a = cpu.attacking(p1);
                 you[a].setEnabled(false);
                 
                 if (p1.endOfGame()) {
+                    janela.setVisible(false);
                     JOptionPane.showMessageDialog(null, "VOCE PERDEU !!!");
+                    new main();
+                    janela.dispose();
                 }
             }
         };
