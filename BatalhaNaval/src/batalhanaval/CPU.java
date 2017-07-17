@@ -13,15 +13,15 @@ public class CPU extends Player {
     private int nd;
     private int ns;
 
-    public CPU() {
-        super();
+    public CPU(int battleship, int cruiser, int destroyer, int submarine) {
+        super("Computer"/*,battleship, cruiser, destroyer, submarine*/);
         attks = new int[100];
         index = -1;
         hit = 0;
-        nb = 1;
-        nc = 2;
-        nd = 3;
-        ns = 4;
+        nb = battleship;
+        nc = cruiser;
+        nd = destroyer;
+        ns = submarine;
         while (nb != 0) {
             Random r = new Random();
             int d = (r.nextInt(2) * 2) - 1;

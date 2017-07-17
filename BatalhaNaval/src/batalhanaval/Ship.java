@@ -31,7 +31,7 @@ abstract public class Ship {
     public boolean attackHit(int x) {
         for (int i = 0; i < size; i++) {
 
-            if (coord[i] == x) {
+            if ((coord[i] == x)&&(attacked[i]==false)) {
                 attacked[i]=true;
                 return true;
             }

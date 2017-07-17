@@ -5,35 +5,38 @@ import java.awt.event.*;
 
 
 public class main {
-    
+    private JFrame main;
     public main(){
         
-        JFrame janela = new JFrame("Batalha Naval");
-        janela.setSize(500,500);
+        main = new JFrame("Batalha Naval");
+        main.setSize(500, 500);
         JPanel panel = new JPanel(new BorderLayout());
         JButton pl = new JButton("Jogar");
         JLabel image = new JLabel();
         Icon war = new ImageIcon(getClass().getResource("images/mainimage3.jpg"));
-        
-        ActionListener numb = new ActionListener(){
+
+        ActionListener numb = new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                janela.setVisible(false);
-                new setUP();
+                main.setVisible(false);
+                new Game();
             }
         };
         image.setIcon(war);
-        panel.add(image,BorderLayout.CENTER);
+        panel.add(image, BorderLayout.CENTER);
         pl.addActionListener(numb);
-        panel.add(pl,BorderLayout.SOUTH);
-        janela.add(panel);
-        janela.setVisible(true);
-        janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        
+        panel.add(pl, BorderLayout.SOUTH);
+        main.add(panel);
+        main.setVisible(true);
+        main.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
+        public void remain(){
+            main.setVisible(true);
+        }
+
     
     public static void main(String[] args) {
         
-        new main();
+        new Game();
     }
 
 }
