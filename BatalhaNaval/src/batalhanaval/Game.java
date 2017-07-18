@@ -10,7 +10,7 @@ public class Game {
 
     
         JFrame janela = new JFrame("Batalha Naval");
-        janela.setSize(500, 500);
+        janela.setSize(1000, 500);
         JLabel player = new JLabel("Jogador");
         JLabel computer = new JLabel("Computador");
         JPanel main = new JPanel(new GridLayout(1, 2));
@@ -71,6 +71,7 @@ public class Game {
         right.add(player, BorderLayout.NORTH);
         left.add(cpushp, BorderLayout.CENTER);
         left.add(computer, BorderLayout.NORTH);
+        left.add(new JPanel(),BorderLayout.WEST);
         main.add(right);
         main.add(left);
         janela.add(main);
