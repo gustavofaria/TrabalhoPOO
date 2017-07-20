@@ -13,7 +13,7 @@ public class main {
         JPanel panel = new JPanel(new BorderLayout());
         JButton pl = new JButton("Jogar");
         JLabel image = new JLabel();
-        Icon war = new ImageIcon(getClass().getResource("images/mainimage3.jpg"));
+        ImageIcon war = new ImageIcon(getClass().getResource("images/mainimage3.jpg"));
         
         ActionListener numb = new ActionListener(){
             public void actionPerformed(ActionEvent e) {

@@ -12,6 +12,7 @@ public class Game {
         JFrame janela = new JFrame("Batalha Naval");
         janela.setSize(1000, 500);
         JLabel player = new JLabel("Jogador");
+
         JLabel computer = new JLabel("Computador");
         JPanel main = new JPanel(new GridLayout(1, 2));
         JPanel right = new JPanel(new BorderLayout());
@@ -66,16 +67,19 @@ public class Game {
             dumb.addActionListener(getnumb);
             cpushp.add(dumb);
         }
-
+        JPanel novo = new JPanel();
+        novo.add(player,BorderLayout.CENTER);
         right.add(plyshp, BorderLayout.CENTER);
-        right.add(player, BorderLayout.NORTH);
+        right.add(novo, BorderLayout.NORTH);
         left.add(cpushp, BorderLayout.CENTER);
-        left.add(computer, BorderLayout.NORTH);
-        left.add(new JPanel(),BorderLayout.WEST);
+        novo = new JPanel();
+        novo.add(computer, BorderLayout.CENTER);
+        left.add(novo, BorderLayout.NORTH);
+        left.add(new JPanel(), BorderLayout.WEST);
         main.add(right);
         main.add(left);
         janela.add(main);
-
+        
         janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         janela.setVisible(true);
     }

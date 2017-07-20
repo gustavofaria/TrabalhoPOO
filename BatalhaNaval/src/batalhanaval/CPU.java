@@ -28,8 +28,7 @@ public class CPU extends Player {
             int c = r.nextInt(100);
             int vet[] = validPI(4, d, c);
             if (vet != null) {
-                System.out.println("Battleship " +nb+" :"+vet[0]+" "+ vet[1] +" "+ vet[2]+ " "+ vet[3]);
-                BattleShip bs = new BattleShip(vet, d);
+               BattleShip bs = new BattleShip(vet, d);
                 addShip(bs);
                 nb--;
             }
@@ -41,7 +40,6 @@ public class CPU extends Player {
             int c = r.nextInt(100);
             int vet[] = validPI(3, d, c);
             if (vet != null) {
-                System.out.println("Cruiser " +nc+" :"+vet[0]+" "+ vet[1] +" "+ vet[2]);
                 Cruiser cr = new Cruiser(vet, d);
                 addShip(cr);
                 nc--;
@@ -54,7 +52,6 @@ public class CPU extends Player {
             int c = r.nextInt(100);
             int vet[] = validPI(2, d, c);
             if (vet != null) {
-                System.out.println("Destroyer " +nd+" :"+vet[0]+" "+ vet[1]);
                 Destroyer dr = new Destroyer(vet, d);
                 addShip(dr);
                 nd--;
@@ -67,7 +64,7 @@ public class CPU extends Player {
             int c = r.nextInt(100);
             int vet[] = validPI(1, d, c);
             if (vet != null) {
-                System.out.println("submarino " +ns+" :"+vet[0]);
+             
                 Submarine sb = new Submarine(vet, d);
                 addShip(sb);
                 ns--;

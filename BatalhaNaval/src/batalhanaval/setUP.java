@@ -120,7 +120,7 @@ public class setUP {
 
             }
         };
-        Icon icone = new ImageIcon(getClass().getResource("images/blueSea.jpg"));
+        Icon icone = new ImageIcon(getClass().getResource("images/sea.png"));
         for (int i = 0; i < 100; i++) {
             JButton dumb = new JButton(icone);
             dumb.setName(Integer.toString(i));
