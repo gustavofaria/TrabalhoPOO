@@ -89,4 +89,15 @@ public class Player {
 
         return new ImageIcon(getClass().getResource("images/sea.png"));
     }
+    
+    public int[] fuckingThief(){
+        int x[] = new int[20];
+        int i = -1;
+        for (Ship ss : ships) {
+            i = ss.burglar(x,i);
+        }
+        for(int j=0;j<20;j++) System.out.println(x[j] + " ");
+        System.out.println();
+        return x;
+    }
 }
