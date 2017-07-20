@@ -68,15 +68,16 @@ abstract public class Ship {
     public Boolean isVertical() {
         return d == -1;
     }
-/*    public void mostra()
-    {
-        System.out.println(" Coordenadas do navio :");
-        for(int i :coord)
-        {
-            System.out.print(" "+i);
+    
+    public int burglar(int haha[],int t){
+        System.out.println("burglar : " + t);
+        for(int i=0;i<size;i++){
+            t++;
+            haha[t] = coord[i];
+            System.out.print(haha[t] + " ");
         }
-        System.out.println("");
+        return t;
     }
-*/
+    
     abstract Icon getIcon(int i);
 }
