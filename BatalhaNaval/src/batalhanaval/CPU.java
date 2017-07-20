@@ -7,7 +7,6 @@ public class CPU extends Player {
 
     private int attks[];
     private int index;
-    private int hit;
     private int nb;
     private int nc;
     private int nd;
@@ -17,7 +16,6 @@ public class CPU extends Player {
         super();
         attks = new int[100];
         index = -1;
-        hit = 0;
         nb = 1;
         nc = 2;
         nd = 3;
@@ -76,20 +74,12 @@ public class CPU extends Player {
         }
     }
 
-    public int attacking(Player p1) {
-        Random rg = new Random();
-
-        int x = rg.nextInt(100);
-        while (belongs(x)) {
-            x = rg.nextInt(100);
-        }
-        index++;
-        attks[index] = x;
-        if (p1.attack(x)) {
-            hit = 1;
-        }
-        return (x) ;
-
+    public int attacking(Player p1){
+        int x[];
+        x = p1.fuckingThief();
+        index ++;
+        p1.attack(x[index]);
+        return x[index];
     }
 
     public boolean belongs(int x) {
